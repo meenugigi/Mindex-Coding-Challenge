@@ -69,7 +69,10 @@ public class CompensationServiceImplTest {
         assertEquals(testCompensation, createdCompensation);
 
 
-
+        // Read checks
+        Compensation readCompensation = restTemplate.getForEntity(readCompensationUrl, Compensation.class, createdCompensation.getEmployee().getEmployeeId()).getBody();
+        assertNotNull(readCompensation);
+        assertEquals(createdCompensation, readCompensation);
     }
 
 }
