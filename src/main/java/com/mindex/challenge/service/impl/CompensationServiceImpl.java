@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
  * Service Provider class for Compensation.
  * Implements the CompensationService interface.
  *
+ * @author Meenu Gigi
  */
 @Service
 public class CompensationServiceImpl implements CompensationService {
@@ -30,11 +31,13 @@ public class CompensationServiceImpl implements CompensationService {
 
     /**
      * Function to create compensation.
-     *
+     * @param compensation
+     * @return the created compensation
      */
     @Override
     public Compensation create(Compensation compensation) {
         LOG.debug("Creating compensation for [{}]", compensation);
+//        retrieving employee details
         Employee emp = employeeService.read(compensation.getEmployee().getEmployeeId());
         compensation.setEmployee(emp);
         compensationRepository.insert(compensation);
@@ -44,13 +47,14 @@ public class CompensationServiceImpl implements CompensationService {
 
     /**
      * Function to read compensation for employee.
-     *
+     * @param id       the employeeID
+     * @return the compensation
      */
     @Override
     public Compensation read(String id) {
         LOG.debug("Reading compensation for Employee id [{}]", id);
-        Employee emp = employeeService.read(id);
-        Compensation compensation = compensationRepository.findByEmployee(emp);
+//        Employee emp = employeeService.read(id);
+        Compensation compensation = compensationRepository.findByEmployee(employeeService.read(id));
         if(compensation == null){
             throw new RuntimeException("Null compensation for employee with id " +id);
         }

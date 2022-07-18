@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Controller class for Reporting Structure.
  *
+ * @author MEENU GIGI
  */
 @RestController
 public class ReportingStructureController {
@@ -25,7 +26,8 @@ public class ReportingStructureController {
 
     /**
      * Function to read reporting structure of an employee.
-     *
+     * @param id of the Reporting structure to be read
+     * @return the reporting structure
      */
     @GetMapping("/reportingStructure/{id}")
     public ReportingStructure read(@PathVariable String id) {

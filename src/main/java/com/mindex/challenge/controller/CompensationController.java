@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Controller class for Compensation.
  *
+ * @author MEENU GIGI
  */
 @RestController
 public class CompensationController {
@@ -20,24 +21,24 @@ public class CompensationController {
 
     /**
      * Function to create compensation.
-     *
+     * @param compensation the compensation
+     * @return the created compensation
      */
     @PostMapping("/compensation")
     public Compensation create(@RequestBody Compensation compensation){
         LOG.debug("Received compensation create request for [{}]", compensation);
-
         return compensationService.create(compensation);
     }
 
 
     /**
      * Function to read compensation.
-     *
+     * @param id of the compensation to be read
+     * @return Compensation
      */
     @GetMapping("/compensation/{id}")
     public Compensation read(@PathVariable String id){
         LOG.debug("Received compensation read request for Employee id [{}]", id);
-
         return compensationService.read(id);
     }
 }
