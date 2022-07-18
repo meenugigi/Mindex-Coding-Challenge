@@ -6,6 +6,7 @@ import java.util.Objects;
 /**
  * Class to represent compensation
  *
+ * @author Meenu Gigi
  */
 public class Compensation {
 
